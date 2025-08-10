@@ -1,4 +1,4 @@
-# Jeevi Academy – Learning Management System (LMS)
+# Jeevi Academy – Learning Management System (LMS)  //under-devlopment
 
 
 ## **Project Overview**
@@ -599,6 +599,14 @@ Then:
 * You can easily attach lessons, quizzes, progress tracking without touching existing logic.
 
 
+
+Now you have:
+
+* **Student enrollment system** (Enrollment model, secure enroll action, duplicate protection).
+* **Personal student dashboard** (students can view their enrolled courses).
+* **Authenticated, role-aware access control** (pages and actions guarded for logged-in students).
+
+
 ---
 
 
@@ -975,6 +983,13 @@ class ContentModelTests(TestCase):
 * Store large media in S3/MinIO + configure signed URLs for private files.
 * Consider background tasks (Celery) for heavy processing (video transcoding, generating thumbnails).
 * Add caching on module/lesson lists for high-read use-cases (e.g., `cache_page` or low-level cache with Redis).
+
+
+Now you have:
+
+* **Structured course content** (Module and Lesson models with ordering and admin management).
+* **Secure content access** (only enrolled students and course teachers can view modules/lessons).
+* **Reusable access helpers & ordered navigation** (`related_name`, `ordering`, and service functions for enrollment checks).
 
 ---
 
@@ -1434,6 +1449,17 @@ class QuizAssignmentTests(TestCase):
 * For academic integrity: consider IP logging, randomized question ordering, question pools, and proctoring integrations if needed.
 * For many quiz attempts/large question banks, consider separating read-heavy quiz APIs with caching and paginated question loads.
 
+
+
+
+
+Now you have:
+
+* **Assessment system** (Quiz, Question, Choice, Attempt models with admin inline editing).
+* **Auto-grading for MCQs** and an attempts/results flow (grading service and result views).
+* **Assignment submissions & grading** (Assignment and Submission models, upload handling, teacher grading workflow).
+
+
 ---
 
 # Phase 5 — Notifications & Communication
@@ -1831,6 +1857,14 @@ class NotificationTests(TestCase):
 * **Monitoring**: Track task failures (Sentry), queue lengths (Redis), and user experience metrics (toast delivery time).
 * **APIs**: Expose notification endpoints as part of a versioned API (`/api/v1/notifications/`) for mobile apps and SPA frontends.
 
+
+
+Now you have:
+
+* **In-app notifications** (Notification model, creator service, list view and admin).
+* **Discussion forum / course threads** (simple forum models, posting view and templates).
+* **Background-ready notification flow** (Celery task stubs and signals prepared for asynchronous fan-out).
+
 ---
 
 
@@ -2077,7 +2111,28 @@ path('progress/', include('progress.urls')),
 * Admins see **all courses, all students** — useful for audits.
 * This is **scalable** because each course's total lessons are stored and progress is updated incrementally rather than recalculated from scratch every time.
 
+
+
+
+Now you have:
+
+* **Student progress tracking** (StudentProgress model with incremental updates and percentage calculation).
+* **Role-specific reports** (student, teacher, and admin report views).
+* **Efficient update strategy** (incremental counters and methods to avoid expensive recalculation).
+
+
 ---
+
+
+## Phase 7 — Final Touches & Polish //under-development
+
+Now you have:
+
+* **Polished UI & responsive layout** (front-end framework integrated, consistent templates).
+* **Production-ready hardening** (permissions, input validation, file/type limits, and security notes).
+* **Operational readiness** (media/storage plan, background tasks, caching/indices, and monitoring suggestions).
+
+
 
 
 
